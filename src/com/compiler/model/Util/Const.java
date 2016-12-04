@@ -5,7 +5,7 @@ package com.compiler.model.Util;
  */
 
 /**
- * 编译内容的文件读取与存储
+ * 记录程序中的常量
  */
-public class FileSystem {
+public class Const {
 }
