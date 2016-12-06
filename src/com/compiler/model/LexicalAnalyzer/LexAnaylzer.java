@@ -1,11 +1,13 @@
 package com.compiler.model.LexicalAnalyzer;
 
-import com.compiler.model.Util.CONST;
+import com.compiler.model.Util.Const;
 import com.compiler.model.Util.LexicalException;
 
 import static com.compiler.model.LexicalAnalyzer.Token.Type;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.LinkedList;
 import java.util.List;
@@ -139,7 +141,7 @@ public class LexAnaylzer {
                 } else if (c == '\0') {
                     throw new LexicalException(String.valueOf(c));
                 } else if (transferredMeaningSign) {
-                    Character tms = CONST.StringTMMap.get(c);
+                    Character tms = Const.StringTMMap.get(c);
                     if (tms == null) {
                         throw new LexicalException(String.valueOf(c));
                     }
@@ -205,17 +207,9 @@ public class LexAnaylzer {
     }
 
     public static void main(String s[]) throws IOException, LexicalException {
-        LexAnaylzer la = new LexAnaylzer(new Reader() {
-            @Override
-            public int read(char[] cbuf, int off, int len) throws IOException {
-                return 0;
-            }
-
-            @Override
-            public void close() throws IOException {
-
-            }
-        });
+        InputStreamReader isr = new InputStreamReader(System.in);
+        BufferedReader br = new BufferedReader(isr);
+        LexAnaylzer la = new LexAnaylzer(br);
         la.read();
     }
 }

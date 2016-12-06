@@ -1,6 +1,6 @@
 package com.compiler.model.LexicalAnalyzer;
 
-import com.compiler.model.Util.CONST;
+import com.compiler.model.Util.Const;
 
 /**
  * Created by puyihao on 16/12/6.
@@ -26,7 +26,7 @@ public class Token {
                         break;
                     }
                 }
-            } else if (CONST.keywordsSet.contains(value)) {
+            } else if (Const.keywordsSet.contains(value)) {
                 type = Type.Keyword;
             }
         } else if (type == Type.Annotation) {

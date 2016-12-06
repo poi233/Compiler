@@ -1,9 +1,8 @@
 package com.compiler.model.LexicalAnalyzer;
 
-import com.compiler.model.Util.CONST;
+import com.compiler.model.Util.Const;
 import com.compiler.model.Util.LexicalException;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -14,7 +13,7 @@ import java.util.List;
 public class SignParser {
 
     static boolean inCharSet(char c) {
-        return CONST.signCharSet.contains(c);
+        return Const.signCharSet.contains(c);
     }
 
     static List<String> parse(String str) throws LexicalException {
@@ -35,11 +34,11 @@ public class SignParser {
     private static String match(int startIndex, String str) {
         String matchStr = null;
         int length = str.length() - startIndex;
-        length = Math.min(length, CONST.MaxLength);
-        if(length >= CONST.MinLength) {
-            for(int i=length - CONST.MinLength; i>=0; i--) {
-                int matchLength = i + CONST.MinLength;
-                HashSet<String> signSet = CONST.signSetList.get(i);
+        length = Math.min(length, Const.MaxLength);
+        if(length >= Const.MinLength) {
+            for(int i=length - Const.MinLength; i>=0; i--) {
+                int matchLength = i + Const.MinLength;
+                HashSet<String> signSet = Const.signSetList.get(i);
                 matchStr = str.substring(startIndex, startIndex + matchLength);
                 if(signSet.contains(matchStr)) {
                     break;
