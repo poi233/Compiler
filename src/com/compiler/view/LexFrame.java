@@ -15,9 +15,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-/**
- * Created by puyihao on 16/12/20.
- */
+
 public class LexFrame extends JFrame implements ActionListener {
 
     /**
@@ -164,7 +162,6 @@ public class LexFrame extends JFrame implements ActionListener {
         add(main_panel);
     }
 
-    @Override
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
         if ((e.getSource() == btn_start_lex) || (e.getSource() == run_lex)) {
@@ -185,7 +182,12 @@ public class LexFrame extends JFrame implements ActionListener {
 
                 // 若是存在词法分析错误
                 if(lex_error_stack.size()!=0){
-                    JOptionPane.showMessageDialog(main_panel, "词法分析阶段出现错误！", "提示", JOptionPane.ERROR_MESSAGE);
+                	for(int i=0;i<lex_error_stack.size();i++)
+                	{
+                		String error_occur=lex_error_stack.get(i).get("row_num");
+                		JOptionPane.showMessageDialog(main_panel, "错误出现在第"+error_occur+"行","Inane error", JOptionPane.ERROR_MESSAGE);
+                	}
+                    //JOptionPane.showMessageDialog(main_panel, "词法分析阶段出现错误！", "提示", JOptionPane.ERROR_MESSAGE);
                 }
                 else {
                     // 句法分析
