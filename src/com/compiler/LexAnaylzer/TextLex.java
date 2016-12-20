@@ -107,26 +107,26 @@ public class TextLex {
 			case '{':
 			case '}':
 				printResult(s, "双界符");
-				return ++i;
+				return i+=1;
 			case ':':
 				if(text.charAt(i+1)=='='){
 					s = s+"=";
 					printResult(s, "界符");
-					return i+2;
+					return i+=2;
 				}
 				else {
 					printError(row_number, s, "不能识别");
-					return i+1;
+					return i+=1;
 				}
 			case ',':
 			case '.':
 			case ';':
 				printResult(s, "单界符");
-				return ++i;
+				return i+=1;
 			case '\\':
 				if(text.charAt(i+1)=='n'||text.charAt(i+1)=='t'||text.charAt(i+1)=='r'){
 					printResult(s+text.charAt(i+1), "转义");
-					return i+2;
+					return i+=2;
 				}
 			case '\'':
 				// 判断是否为单字符，否则报错
@@ -153,7 +153,7 @@ public class TextLex {
 					// 输出运算符
 					s = s+ch;
 					printResult(s, "运算符");
-					return ++i;
+					return i+=1;
 				}
 				else{
 					// 输出运算符
@@ -170,7 +170,7 @@ public class TextLex {
 					// 输出运算符
 					s = s+ch;
 					printResult(s, "运算符");
-					return ++i;
+					return i+=1;
 				}
 				else if(ch=='s'||ch=='c'||ch=='d'||ch=='f'||ch=='l'){
 					// 输出类型标识符
@@ -186,7 +186,7 @@ public class TextLex {
 			default:
 				// 输出暂时无法识别的字符,制表符也被当成了有问题的字符
 				printError(row_number, s, "暂时无法识别的标识符");
-				return ++i;
+				return i+=1;
 			}
 		}
 	}
