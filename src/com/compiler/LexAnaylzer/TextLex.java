@@ -432,13 +432,13 @@ public class TextLex {
 		}
 	}
 	
-	// 处理注释,没有考虑不闭合的情况
+	// 处理注释
 	public int handleNote(int arg, String arg0){
 		int i = arg;
 		char ch=text.charAt(++i);
 		String s = arg0+ch;
 		ch = text.charAt(++i);
-		while (ch!='*' || ((i+1)<text_length) && text.charAt(i+1)!='/') {
+		while (ch!='*' || text.charAt(i+1)!='/') {
 			s = s+ch;
 			if (ch=='\r'||ch=='\n') {
 				row_number++;
@@ -447,8 +447,14 @@ public class TextLex {
 				printError(row_number, s, "注释没有闭合");
 				return i;
 			}
+			if((i+1)==text_length)
+			{
+				printError(row_number, s, "注释没有闭合");
+				return i+1;
+			}
 			ch = text.charAt(++i);
 		}
+		//if(text.charAt(index))
 		s = s+"*/";
 		printResult(s, "注释");
 		return i+2;
@@ -551,7 +557,10 @@ public class TextLex {
 			tbmodel_lex_result.addRow(new String[]{"STR", rs_value});
 		}
 		else {
+			if(rs_value!="注释"&&rs_value!="单行注释")
+			{
 			lex_result_stack.add(rs_value);
+			}
 			tbmodel_lex_result.addRow(new String[]{rs_name, rs_value});
 		}
 			
