@@ -378,6 +378,8 @@ public class TextLex {
 	public int handleSingleLineNote(int arg, String arg0){
 		String s = arg0;
 		int i = arg;
+		int temp=row_number;
+		temp+=1;
 		char ch = text.charAt(++i);
 		while (ch!='\r'&&ch!='\n'&&ch!='\0') {
 			s = s+ch;
@@ -557,7 +559,7 @@ public class TextLex {
 			tbmodel_lex_result.addRow(new String[]{"STR", rs_value});
 		}
 		else {
-			if(rs_value!="注释"&&rs_value!="单行注释")
+			if(rs_name!="注释"&&rs_name!="单行注释")
 			{
 			lex_result_stack.add(rs_value);
 			}
