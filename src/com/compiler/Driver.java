@@ -1,6 +1,6 @@
 package com.compiler;
 
-import com.compiler.model.SyntaxAnalyzer.AnalyseList;
+import com.compiler.SyntaxAnalyzer.AnalyseList;
 import com.compiler.view.LexFrame;
 
 import javax.swing.*;
@@ -14,6 +14,6 @@ public class Driver {
         lexframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         lexframe.setResizable(false);
         lexframe.setVisible(true);
-        AnalyseList.getInstace().setAnalyseList();
+        AnalyseList analyse = new AnalyseList();
     }
 }

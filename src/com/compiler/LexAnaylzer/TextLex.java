@@ -1,4 +1,4 @@
-package com.compiler.model.LexAnaylzer;
+package com.compiler.LexAnaylzer;
 
 import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
@@ -14,7 +14,7 @@ public class TextLex {
 	private ArrayList<HashMap<String, String>> lex_error_stack;
 	private int text_length;
 	private int row_number=1;
-	String[] Key = {"void", "int", "long", "double", "char", "float", "else", "if", "return", "for", "goto", "short", "static", "while", "do"};
+	String[] Key = {"void", "int", "double", "long", "char", "float", "else", "if", "return", "for", "goto", "short", "static", "do", "while"};
 	
 	public TextLex(String text, DefaultTableModel tb_lex_result, DefaultTableModel tb_lex_error){
 		lex_result_stack = new ArrayList<String>();
