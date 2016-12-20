@@ -378,8 +378,6 @@ public class TextLex {
 	public int handleSingleLineNote(int arg, String arg0){
 		String s = arg0;
 		int i = arg;
-		int temp=row_number;
-		temp+=1;
 		char ch = text.charAt(++i);
 		while (ch!='\r'&&ch!='\n'&&ch!='\0') {
 			s = s+ch;
